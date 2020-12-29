@@ -26,7 +26,9 @@ while ( have_posts() ) :
 			<?php
 			the_content();
 
-			echo '<p>' . get_post_meta(get_the_ID(), '_dc_price', true) . ' ' . strtoupper(get_post_meta(get_the_ID(), '_dc_currency', true)) . '</p>';
+			echo '<p>Price: ' . get_post_meta(get_the_ID(), '_dc_price', true) . ' ' . strtoupper(get_post_meta(get_the_ID(), '_dc_currency', true)) . '</p>';
+
+			?> <p>Locations: <?php the_terms(get_the_ID(), 'locations'); ?> </p> <?php
 
 			wp_link_pages(
 				array(
