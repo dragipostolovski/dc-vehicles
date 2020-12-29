@@ -53,6 +53,8 @@ class Dc_Vehicles_Admin {
 		$this->version = $version;
 		$this->load_cpt();
 		add_filter( 'page_template', array($this, 'oglasi_page_template' ));
+		add_filter( 'single_template', array($this, 'vehicle_custom_post_type_template' ));
+
 
 	}
 
@@ -112,6 +114,18 @@ class Dc_Vehicles_Admin {
 		if ( is_page( 'oglasi' ) ) {
 			$page_template = dirname( __FILE__ ) . '/templates/oglasi.php';
 		}
+
 		return $page_template;
+	}
+
+	public function vehicle_custom_post_type_template( $single_template )
+	{
+		global $post;
+
+		if ($post->post_type == 'vehicle' ) {
+			$single_template = dirname( __FILE__ ) . '/templates//single-vehicle.php';
+		}
+
+		return $single_template;
 	}
 }
