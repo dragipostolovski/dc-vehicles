@@ -30,7 +30,7 @@ jQuery(document).ready(function ( $ ) {
 
 	$('#tax-locations').on('change', function () {
 		let location = $(this).find('option:selected').val();
-		setGetParameter('location', location );
+		setGetParameter('location', location);
 	});
 
 	function setGetParameter(paramName, paramValue)

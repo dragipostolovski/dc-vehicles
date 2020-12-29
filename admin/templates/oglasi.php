@@ -2,7 +2,7 @@
 
 get_header();
 
-if(isset($_GET['location'])) {
+if(isset($_GET['location']) && $_GET['location'] != '') {
 	$args = [
 		'post_type' => 'vehicle',
 		'tax_query' => array(
@@ -28,7 +28,7 @@ if ( $vehicles->have_posts() ) { ?>
 		<select id="tax-locations">
 			<option value=""></option>
 			<?php foreach($terms as $term) { ?>
-				<option value="<?=  $term->name ?>"><?=  $term->name ?></option>
+				<option <?= $_GET['location'] == $term->name ? 'selected' : ''; ?> value="<?=  $term->name ?>"><?=  $term->name ?></option>
 			<?php } ?>
 		</select>
 	</div>
